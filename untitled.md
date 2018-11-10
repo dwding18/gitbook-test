@@ -1,22 +1,49 @@
-# Untitled
+# Installation
 
-## Getting Super Powers
+## Install DGraph
 
-Becoming a super hero is a fairly straight forward process:
+DGraph is the data store that Culass uses to persist node data. It is a fairly straight forward process to install DGraph into Kubernetes:
 
+```bash
+$ kubectl create -f https://raw.githubusercontent.com/dgraph-io/dgraph/master/contrib/config/kubernetes/dgraph-ha.yaml
 ```
-$ give me super-powers
+
+Output:
+
+```bash
+service "dgraph-zero-public" created
+service "dgraph-alpha-public" created
+service "dgraph-alpha-0-http-public" created
+service "dgraph-ratel-public" created
+service "dgraph-zero" created
+service "dgraph-alpha" created
+statefulset "dgraph-zero" created
+statefulset "dgraph-alpha" created
+deployment "dgraph-ratel" created
 ```
+
+## Install Cutlass
 
 {% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
+ Cutlass service will be deployed to a Kubernetes cluster
 {% endhint %}
 
-Once you're strong enough, save the world:
-
+```text
+$ kubectl create -f deploy/cutlass.yaml
 ```
-// Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
+
+Output:
+
+```bash
+deployment "cutlass-api" created
+service "cutlass-api" created
+ingress "cutlass-api" created
+```
+
+## Install Cutlass Kubernetes Collector
+
+```text
+$ kubectl create -f deploy/collector.yaml
 ```
 
 
