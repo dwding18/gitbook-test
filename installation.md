@@ -22,7 +22,7 @@ statefulset "dgraph-alpha" created
 deployment "dgraph-ratel" created
 ```
 
-## Install Cutlass
+## Install K-Atlas
 
 {% hint style="info" %}
  Cutlass service will be deployed to a Kubernetes cluster
@@ -40,7 +40,7 @@ service "cutlass-api" created
 ingress "cutlass-api" created
 ```
 
-## Install Cutlass Kubernetes Collector
+## Install K-Atlas Kubernetes Collector
 
 ```text
 $ kubectl create -f deploy/collector.yaml
