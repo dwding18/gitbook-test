@@ -1,8 +1,8 @@
 ---
 description: >-
-  This section documents all the Cutlass APIs. The APIs can be accessed when the
-  Rest-API is running locally or when it is run as part of the Kubernetes
-  cluster on AWS.
+  This section documents all the externally exposed Cutlass APIs. The APIs can
+  be accessed when the Rest-API is running locally or when it is run as part of
+  the Kubernetes cluster on AWS.
 ---
 
 # Rest APIs

@@ -1,5 +1,7 @@
 # Installation
 
+With an introduction to the core concepts in the previous section, lets move onto setting up Cutlass and using it.
+
 ## Install DGraph
 
 DGraph is the data store that Culass uses to persist node data. It is a fairly straight forward process to install DGraph into Kubernetes:
