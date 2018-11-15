@@ -12,11 +12,11 @@ The controller is responsible for discovery of Kubernetes assets in Kubernetes C
 
 #### Rest Service
 
-The Rest Service exposes APIs that can be used to get details about Kubernetes entities, run queries to help diagnose issues. For details on Rest Service Calls, please refer [Rest APIs](rest-apis.md) 
+The Rest Service exposes APIs that can be used to get details about Kubernetes entities, run queries to help diagnose issues in kubernetes clusters. The rest service must reside in the Cutlass Kubernetes Cluster. For details on Rest Service Calls, please refer [Rest APIs](rest-apis.md) 
 
 #### Web Application
 
-The Web Application exposes UI search capability to search clusters based on several criteria. For details on usage, please refer [Cutlass UI](cutlass-ui.md)
+The Web Application exposes UI search capability to search clusters based on several criteria. The Web application must be hosted on the Cutlass Kubernetes Cluster. For details on usage, please refer [Cutlass UI](cutlass-ui.md)
 
 #### Database
 

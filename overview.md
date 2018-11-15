@@ -1,6 +1,6 @@
 # Overview
 
-k8tlas allows you to sync aggregate resources across multiple Kubernetes clusters to create a service centric view of deployment topology and resource dependencies.
+Cutlass aka k8atlas, allows you to sync aggregate resources across multiple Kubernetes clusters to create a service centric view of deployment topology and resource dependencies.
 
 It addresses following problems in an enterprise environment of Kubernetes.
 
@@ -10,5 +10,5 @@ It addresses following problems in an enterprise environment of Kubernetes.
 * View historical data and predict anomalies based on usage insights. 
 * Aggregate resources across multiple K8s clusters
 
-It provides a Web Viewer that can be used to search data and view graphical results in real time.
+It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time.
 
