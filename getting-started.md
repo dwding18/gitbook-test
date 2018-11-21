@@ -16,7 +16,7 @@ The Rest Service exposes APIs that can be used to get details about Kubernetes e
 
 #### Web Application
 
-The Web Application exposes UI search capability to search clusters based on several criteria. The Web application must be hosted on the Cutlass Kubernetes Cluster. For details on usage, please refer [Cutlass UI](cutlass-ui.md)
+The Web Application exposes UI search capability to search clusters based on several criteria. The Web application must be hosted on the Cutlass Kubernetes Cluster. For details on usage, please refer [Cutlass UI]()
 
 #### Database
 

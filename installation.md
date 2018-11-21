@@ -1,6 +1,6 @@
 # Installation
 
-With an introduction to the core concepts in the previous section, lets move onto setting up Cutlass and using it.
+With an introduction to the core concepts in the previous section, lets move onto setting up K-Atlas and using it.
 
 ## Install DGraph
 
@@ -27,7 +27,7 @@ deployment "dgraph-ratel" created
 ## Install K-Atlas
 
 {% hint style="info" %}
- Cutlass service will be deployed to a Kubernetes cluster
+ K-Atlas service will be deployed to a Kubernetes cluster
 {% endhint %}
 
 ```text

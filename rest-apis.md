@@ -1,8 +1,8 @@
 ---
 description: >-
-  This section documents all the externally exposed Cutlass APIs. The APIs can
+  This section documents all the externally exposed K-Atlas APIs. The APIs can
   be accessed when the Rest-API is running locally or when it is run as part of
-  the Kubernetes cluster on AWS.
+  the Kubernetes cluster.
 ---
 
 # Rest APIs
@@ -13,9 +13,7 @@ When running locally- Use the local Ip and port that the Rest Service is running
 
 Eg http://127.0.0.1:8011/
 
-When running as part of the cluster, Use the ingress Address. The ingress address can be obtained by  running the command \[kubectl get ingress\] and using the ADDRESS field from it. 
-
-Eg: https://paaspreprod-devdevxcmdbapi-3894-608780858.us-west-2.elb.amazonaws.com/
+When running as part of the cluster, Use the ingress Address. The ingress address can be obtained by  running the command `kubectl get ingress` and using the ADDRESS field from it. 
 
 {% api-method method="get" host="https://" path=":ingress/health" %}
 {% api-method-summary %}

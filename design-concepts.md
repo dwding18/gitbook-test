@@ -22,7 +22,7 @@ The controller is designed as a Kubernetes custom controller. The controller mus
 
 The controller consists of Informers which List and then Watch for events from the cluster where it runs. The native Kubernetes events cache offered by the client-go library is used, since repeatedly retrieving information from the Kube API server can become expensive. We only cares about events when the object has been created, modified or deleted. When one of these events is triggered on any of the Kubernetes entities which we handle, it is added to the controllers WorkQueue. The controller then picks them up from the WorkQueue, validates them and makes an API call to the Rest Service to store them in the database.
 
-Adding a new controller is a simple process. For details on it, please refer to [Contribute to Cutlass](contribute-to-cutlass.md)
+Adding a new controller is a simple process. For details on it, please refer to [Contribute to Cutlass]()
 
 #### _Rest Service_
 
@@ -34,9 +34,9 @@ It has CRUD APIs for handling entities. These are not externally exposed. Additi
 
 The Web Application has several views offering support for real time queries, graph queries and historical queries.
 
-For novice users, we offer a one term substring query, that provided the added flexilbility for users. Users just provide the word to look for and don't need provide additional detail about the Kubernetes entitiy or attribute they are looking for. Based on the word entered, we provide all the matches and offer the user the option to drill down further to their entity of interest. For details on usage , please refer to the section [Cutlass UI](cutlass-ui.md)
+For novice users, we offer a one term substring query, that provided the added flexilbility for users. Users just provide the word to look for and don't need provide additional detail about the Kubernetes entitiy or attribute they are looking for. Based on the word entered, we provide all the matches and offer the user the option to drill down further to their entity of interest. For details on usage , please refer to the section [Cutlass UI]()
 
-For advanced users, we offer a key, value based search query. The user can search based on attributes and the values they are looking for. For details on usage , please refer to the section [Cutlass UI](cutlass-ui.md)
+For advanced users, we offer a key, value based search query. The user can search based on attributes and the values they are looking for. For details on usage , please refer to the section [Cutlass UI]()
 
 
 

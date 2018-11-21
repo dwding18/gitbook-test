@@ -1,12 +1,12 @@
 ---
-description: What prompted us to develop Cutlass ?
+description: What prompted us to develop K-Atlas ?
 ---
 
 # Motivation
 
-In a Kubernetes ecosystem, with multiple clusters deployed, it is not only time consuming, but tedious for operators/developers to debug issues. Application deployment data are stored in various dispersed systems and difficult to navigate, audit and diagnose. Cutlass solves this by providing a holistic view and query interface.
+In a Kubernetes ecosystem, with multiple clusters deployed, it is not only time consuming, but tedious for operators/developers to debug issues. Application deployment data are stored in various dispersed systems and difficult to navigate, audit and diagnose. K-Atlas solves this by providing a holistic view and query interface.
 
-Additionally, there is no graphical view of the topology, making it hard to visualize the system. Cutlass solves this by providing a near real-time graphical view of the system.
+Additionally, there is no graphical view of the topology, making it hard to visualize the system. K-Atlas solves this by providing a near real-time graphical view of the system.
 
 If your use case falls under the below or you have similar requirements, please check out the upcoming Sections.
 
@@ -18,7 +18,7 @@ User can narrow down the list of possible suspects by checking Load balancer, no
 
 What is the application deployment that has pod IP x.x.x.x?
 
-Pods backing a dns domain [x.x.intuit.com](http://x.x.intuit.com/) ?
+Pods backing a dns domain `service.domain.com` ?
 
 * Improved, reconciled data and usage insights for application compliance audits
 
