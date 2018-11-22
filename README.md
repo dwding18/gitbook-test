@@ -1,7 +1,3 @@
----
-description: Kubernetes Application Runtime Browser
----
-
 # K-Atlas
 
 ## What It Does
@@ -47,7 +43,9 @@ How to [Set Up](docs/installation.md).
 
 ## Roadmap
 
+#### v0.5
 
+* [x] Support for Kubernetes resource collecting and store in graph database
 
 ## Contributing
 
