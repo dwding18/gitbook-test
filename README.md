@@ -24,10 +24,6 @@ Check out more details on [Motivation and Use Cases](docs/motivation.md) K-Atlas
 
 It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time. Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689).
 
-## Release Notes
-
-More releases at [Release Notes](release.md).
-
 ## Deploying to a Cluster
 
 ### Technical Requirements
@@ -46,6 +42,8 @@ How to [Set Up](docs/installation.md).
 #### v0.5
 
 * [x] Support for Kubernetes resource collecting and store in graph database
+
+More releases at [Release Notes](release.md).
 
 ## Contributing
 
