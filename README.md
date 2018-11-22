@@ -6,15 +6,25 @@ description: Kubernetes Application Runtime Browser
 
 ## What It Does
 
-**K-Atlas** \(_pronounced **Cutlass**_\), allows you to sync aggregate resources across multiple Kubernetes clusters to create a service centric view of deployment topology and resource dependencies.
+**K-Atlas** \(_pronounced **Cutlass**_\), is a distributed graph based platform to automatically collect, discover, explore and relate multi-cluster Kubernetes resources and metadata. The system will have a rich query language that will allow for simple and efficient exploration and extensibility.
 
 It addresses following problems in an enterprise environment of Kubernetes.
 
-* Help with application diagnosing and troubleshooting. 
-* Visualize application deployment topology and resource dependency while navigating from one object to another.
-* Improved and reconciled data and usage insights that can be used for application compliance audits.
-* View historical data and predict anomalies based on usage insights. 
-* Aggregate resources across multiple K8s clusters
+* **Discoverability**
+  * Find K8s objects across multiple distributed K8s clusters
+  * Real-time view discovered objects
+  * Streaming APIs and UI for programmatic and human interactions
+* **Advanced Exploration**
+  * Identify similarities and differences between objects from pods to clusters
+  * In depth analysis of individual characteristics like performance
+* **Federated Application View**
+  * Take an application centric view - correlate an application’s metadata across multiple clusters
+* **Reporting**
+  * Provide advanced reporting on compliance, security and other organizational policies
+* **Policy Enforcement**
+  * Allow for organizational policies to be enforced across the fleet in a consistent manner
+
+Check out more details on [Motivation and Use Cases](docs/motivation.md) K-Atlas is addressing.
 
 It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time. Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689).
 

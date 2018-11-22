@@ -14,7 +14,7 @@ Dgraph must be deployed on the Cutlass Kubernetes cluster in HA mode. We run 3 D
 
 The Dgraph Schema is loaded as part of [Installation](installation.md) section as well. The "term" index is used to support term matches. The "trigram" index is used to support substring match based on the regex match capability it supports. 
 
-The workload would normally be heavy on the writes and low on the reads depending as the number of events that are received from the cluster would be higher that the number of queries executed against it. For Performance and SLAs please refer to the Section on [SLAs](slas.md)
+The workload would normally be heavy on the writes and low on the reads depending as the number of events that are received from the cluster would be higher that the number of queries executed against it. For Performance and SLAs please refer to the Section on [SLAs]()
 
 #### _Controller_
 

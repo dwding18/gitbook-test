@@ -1,5 +1,5 @@
 ---
-description: What prompted us to develop K-Atlas ?
+description: What motivated us to develop K-Atlas ?
 ---
 
 # Motivation
@@ -8,25 +8,37 @@ In a Kubernetes ecosystem, with multiple clusters deployed, it is not only time 
 
 Additionally, there is no graphical view of the topology, making it hard to visualize the system. K-Atlas solves this by providing a near real-time graphical view of the system.
 
-If your use case falls under the below or you have similar requirements, please check out the upcoming Sections.
+## **User Cases**
 
-**User Cases**
+#### **View and Report on Cluster Consistency**
 
-* Help with application diagnosing and troubleshooting
+* Evaluate the configuration of multiple K8s clusters \(potentially in multiple regions\)
+* Compare against baseline and each other, and provide a diff
 
-User can narrow down the list of possible suspects by checking Load balancer, node server, network device etc which has relationship with service when the issue happened. User can query application resources by various criteria and relationship.
+#### **Application Centric View**
 
-What is the application deployment that has pod IP x.x.x.x?
+* Present a global view of an application - across clusters and regions
+* What versions of the application are running? Where?
+* What are the key objects powering the app? What is their current status? How are they changing?
+* Monitor application fleet on a single pane of glass - how many resources are my application consuming? In what regions?
+* Diagnose and narrow down application problems
+  * How many pods are backing a dns domain x.y.intuit.com?
+  * What is the application deployment that has pod IP a.b.c.d?
 
-Pods backing a dns domain `service.domain.com` ?
+#### **Policy Compliance and Enforcement**
 
-* Improved, reconciled data and usage insights for application compliance audits
+* Set policies and query for compliance
+* Send out alerts when policies are violated and aid in enforcement
+* Examples of policies include:
+  * Does application deployment meet minimum DR requirement?
+  * Run only approved protocols on approved ports \(HTTPS on 443\)
 
-User can leverage the collected data to check if an application deployment meets the minimum DR requirements. For example, if it is running on HTTPS port 443, across multiple k8s clusters.
+#### **Change Management**
 
-* Support application deployment configurations
+* Playback changes that happened on the fleet
+* Provide deep visibility into any change to the fleet
 
-Store the deployment metadata and k8s spec to drive an application to the desired state.
+
 
 
 
