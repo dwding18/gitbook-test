@@ -1,7 +1,6 @@
 # Table of contents
 
 * [K-Atlas](README.md)
-* [Overview](overview.md)
 * [Release Notes](release.md)
 
 ## docs
@@ -14,5 +13,4 @@
 * [Design Concepts](docs/design-concepts.md)
 * [FAQ](docs/faq.md)
 * [Rest APIs](docs/rest-apis.md)
-* [Untitled](docs/untitled.md)
 
