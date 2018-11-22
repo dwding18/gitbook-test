@@ -1,13 +1,18 @@
 # Table of contents
 
-* [Release Notes](README.md)
+* [K-Atlas](README.md)
 * [Overview](overview.md)
-* [Motivation](motivation.md)
-* [Core Components](getting-started.md)
-* [Installation](installation.md)
-* [Rest APIs](rest-apis.md)
-* [Design Concepts](design-concepts.md)
-* [FAQ](faq.md)
-* [SLAs](slas.md)
-* [Contributing guidelines](contributing.md)
+* [Release Notes](release.md)
+
+## docs
+
+* [Motivation](docs/motivation.md)
+* [SLAs](docs/slas.md)
+* [Contributing guidelines](docs/contributing.md)
+* [Core Components](docs/getting-started.md)
+* [Installation](docs/installation.md)
+* [Design Concepts](docs/design-concepts.md)
+* [FAQ](docs/faq.md)
+* [Rest APIs](docs/rest-apis.md)
+* [Untitled](docs/untitled.md)
 

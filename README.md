@@ -1,28 +1,14 @@
-# Release Notes
+# K-Atlas
 
-## 0.5 - 2018-11-01
+Cutlass aka k8atlas, allows you to sync aggregate resources across multiple Kubernetes clusters to create a service centric view of deployment topology and resource dependencies.
 
-### Fixed
+It addresses following problems in an enterprise environment of Kubernetes.
 
-* N/A
+* Help with application diagnosing and troubleshooting. 
+* Visualize application deployment topology and resource dependency while navigating from one object to another.
+* Improved and reconciled data and usage insights that can be used for application compliance audits.
+* View historical data and predict anomalies based on usage insights. 
+* Aggregate resources across multiple K8s clusters
 
-### Added
-
-* First release of K-Atlas API, Collector and Browser
-  * Entity API for CRUD of objects
-  * Query API for keyword based query which scans all indexed attributes of Kubernetes Objects. It also supports partial match.
-  * Collector watches and sends all Kubernetes Objects updates to K-Atlas API
-  * K-Atlas Browser supports query and visualization of Kubernetes Objects with one level relationship.
-
- 
-
-## 0.1 - 2018-08-01
-
-### Added
-
-* Introduced K-Atlas into the world.
-
-![K-Atlas \(pronounced Cutlass\)](.gitbook/assets/image.png)
-
-
+It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time.
 
