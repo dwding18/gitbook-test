@@ -1,6 +1,6 @@
 # K-Atlas
 
-## What It Does?
+## What It Does
 
 **K-Atlas** \(_pronounced **Cutlass**_\), is a distributed graph based platform to automatically collect, discover, explore and relate multi-cluster Kubernetes resources and metadata. The system will have a rich query language that will allow for simple and efficient exploration and extensibility.
 
