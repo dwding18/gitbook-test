@@ -16,7 +16,7 @@ It addresses following problems in an enterprise environment of Kubernetes.
 * View historical data and predict anomalies based on usage insights. 
 * Aggregate resources across multiple K8s clusters
 
-It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time.
+It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time. Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689).
 
 ## Release Notes
 
