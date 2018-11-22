@@ -4,7 +4,7 @@ description: Kubernetes Application Runtime Browser
 
 # K-Atlas
 
-### What It Does
+## What It Does
 
 **K-Atlas** \(_pronounced **Cutlass**_\), allows you to sync aggregate resources across multiple Kubernetes clusters to create a service centric view of deployment topology and resource dependencies.
 
