@@ -72,9 +72,5 @@ $ kubectl create -f deploy/collector.yaml
 $ kubectl create -f deploy/browser.yaml
 ```
 
-{% page-ref page="installation.md" %}
-
-{% page-ref page="contributing.md" %}
-
 
 
