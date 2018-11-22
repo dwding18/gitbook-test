@@ -2,7 +2,25 @@
 
 With an introduction to the core concepts in the previous section, lets move onto setting up K-Atlas and using it.
 
-## Install DGraph
+## Install All-in-one
+
+Install everything to have a ready-to-use setup of K-Atlas:
+
+```text
+$ kubectl create -f https://raw.githubusercontent.com/dgraph-io/dgraph/master/contrib/config/kubernetes/dgraph-ha.yaml
+$ kubectl create -f deploy/cutlass.yaml
+$ kubectl create -f deploy/collector.yaml
+```
+
+Point your browser to following URL to start using K-Atlas:
+
+```text
+http://ingress/
+```
+
+Or you can install individual components using below instructions.
+
+### Install DGraph
 
 DGraph is the data store that Culass uses to persist node data. It is a fairly straight forward process to install DGraph into Kubernetes:
 
@@ -24,7 +42,7 @@ statefulset "dgraph-alpha" created
 deployment "dgraph-ratel" created
 ```
 
-## Install K-Atlas
+### Install K-Atlas API
 
 {% hint style="info" %}
  K-Atlas service will be deployed to a Kubernetes cluster
@@ -42,11 +60,21 @@ service "cutlass-api" created
 ingress "cutlass-api" created
 ```
 
-## Install K-Atlas Kubernetes Collector
+### Install K-Atlas Kubernetes Collector
 
 ```text
 $ kubectl create -f deploy/collector.yaml
 ```
+
+### Install K-Atlas Browser
+
+```text
+$ kubectl create -f deploy/browser.yaml
+```
+
+{% page-ref page="installation.md" %}
+
+{% page-ref page="contributing.md" %}
 
 
 
