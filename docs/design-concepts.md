@@ -34,7 +34,7 @@ It has an API for validating entity metadata that comes in from the Controller. 
 
 The Web Application has several views offering support for real time queries, graph queries and historical queries.
 
-For novice users, we offer a one term substring query, that provided the added flexilbility for users. For details on usage , please Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689). 
+For novice users, we offer a one term substring query, that provides added flexilbility for users. For details on usage , please Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689). 
 
 For advanced users, we offer a key, value based search query. The user can search based on attributes and the values they are looking for. For details on usage , please Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689).
 

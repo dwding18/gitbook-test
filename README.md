@@ -60,6 +60,7 @@ How to [Set Up](docs/installation.md).
 #### v0.5
 
 * [x] Support for Kubernetes resource collecting and store in graph database
+* [x] View graphical and tabular results in real time
 
 More releases at [Release Notes](release.md).
 

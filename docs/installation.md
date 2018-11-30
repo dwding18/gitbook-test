@@ -8,8 +8,10 @@ Install everything to have a ready-to-use setup of K-Atlas:
 
 ```text
 $ kubectl create -f https://raw.githubusercontent.com/dgraph-io/dgraph/master/contrib/config/kubernetes/dgraph-ha.yaml
+$ kubectl create -f deploy/dgraph-schema.yaml
 $ kubectl create -f deploy/k-atlas.yaml
 $ kubectl create -f deploy/collector.yaml
+$ kubectl create -f deploy/browser.yaml
 ```
 
 Point your browser to following URL to start using K-Atlas:
@@ -42,6 +44,10 @@ statefulset "dgraph-alpha" created
 deployment "dgraph-ratel" created
 ```
 
+### Setup Dgraph Schema
+
+TODO
+
 ### Install K-Atlas API
 
 {% hint style="info" %}
@@ -71,5 +77,11 @@ $ kubectl create -f deploy/collector.yaml
 $ kubectl create -f deploy/browser.yaml
 ```
 
+## Run on a Kubernetes Cluster
 
+TODO
+
+## Run Locally
+
+TODO
 
