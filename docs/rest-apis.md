@@ -5,7 +5,7 @@ description: >-
   the Kubernetes cluster.
 ---
 
-# Rest APIs
+# K-Atlas APIs
 
 The Rest-API Service supports secure access. When using the secure mode the appropriate headers must be provided.
 
