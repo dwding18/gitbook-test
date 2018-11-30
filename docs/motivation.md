@@ -22,7 +22,7 @@ Additionally, there is no graphical view of the topology, making it hard to visu
 * What are the key objects powering the app? What is their current status? How are they changing?
 * Monitor application fleet on a single pane of glass - how many resources are my application consuming? In what regions?
 * Diagnose and narrow down application problems
-  * How many pods are backing a dns domain x.y.intuit.com?
+  * How many pods are backing a dns domain x.y.abc.com?
   * What is the application deployment that has pod IP a.b.c.d?
 
 #### **Policy Compliance and Enforcement**

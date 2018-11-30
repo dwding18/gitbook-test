@@ -20,7 +20,9 @@ Point your browser to following URL to start using K-Atlas:
 http://ingress/
 ```
 
-Or you can install individual components using below instructions.
+Or you can install individual components using below instructions. 
+
+The individual components will be deployed in Kubernetes clusters. To run locally, please see the Section [Run K-Atlas locally](run-k-atlas-locally.md).
 
 ### Install DGraph
 
@@ -46,13 +48,9 @@ deployment "dgraph-ratel" created
 
 ### Setup Dgraph Schema
 
-TODO
+TODO- we will have a script/code for this
 
 ### Install K-Atlas API
-
-{% hint style="info" %}
- K-Atlas service will be deployed to a Kubernetes cluster
-{% endhint %}
 
 ```text
 $ kubectl create -f deploy/k-atlas.yaml
@@ -77,11 +75,5 @@ $ kubectl create -f deploy/collector.yaml
 $ kubectl create -f deploy/browser.yaml
 ```
 
-## Run on a Kubernetes Cluster
 
-TODO
-
-## Run Locally
-
-TODO
 
