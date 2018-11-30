@@ -1,6 +1,6 @@
 # K-Atlas
 
-## What It Does
+## What It Does?
 
 **K-Atlas** \(_pronounced **Cutlass**_\), is a distributed graph based platform to automatically collect, discover, explore and relate multi-cluster Kubernetes resources and metadata. The system will have a rich query language that will allow for simple and efficient exploration and extensibility.
 
@@ -20,7 +20,7 @@ It addresses following problems in an enterprise environment of Kubernetes.
 * **Policy Enforcement**
   * Allow for organizational policies to be enforced across the fleet in a consistent manner
 
-Check out more details on [Motivation and Use Cases](docs/motivation.md) K-Atlas is addressing.
+Check out more details on [Motivation and Use Cases](docs/motivation.md) that K-Atlas is addressing.
 
 It provides a Web Viewer that can be used to search the Kubernetes cluster data and view graphical results in real time. Click [here to see a demo](https://www.useloom.com/share/eb97aa1054004be197e3ed732223e689).
 
