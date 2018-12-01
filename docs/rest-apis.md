@@ -7,15 +7,15 @@ description: >-
 
 # K-Atlas APIs
 
-The Rest-API Service supports secure access. When using the secure mode the appropriate headers must be provided.
+The Rest-API Service supports secure and in-secure access. When using the secure mode the appropriate headers must be provided.
 
 When running locally- Use the local Ip and port that the Rest Service is running on.
 
 Eg http://127.0.0.1:8011/
 
-When running as part of the cluster, Use the ingress Address. The ingress address can be obtained by  running the command `kubectl get ingress` and using the ADDRESS field from it. 
+When running as part of the cluster, Use the appropriate Address and Port. 
 
-{% api-method method="get" host="https://" path=":ingress/health" %}
+{% api-method method="get" host="http://address/health" path="" %}
 {% api-method-summary %}
 Get status of Cutlass Service
 {% endapi-method-summary %}
@@ -57,7 +57,7 @@ Request failed as Rest-API Service was not accessible.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://:ingress/v1/query?" path="attribute=value\[&attribute=value\]" %}
+{% api-method method="get" host="http://address/v1/query?" path="attribute=value\[&attribute=value\]" %}
 {% api-method-summary %}
 Get Query Results based on a key-value query
 {% endapi-method-summary %}
@@ -117,7 +117,7 @@ Request failed as Rest-API Service was not accessible.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://:ingress" path="/v1/query?keyword=\"\"" %}
+{% api-method method="get" host="http://address" path="/v1/query?keyword=\"\"" %}
 {% api-method-summary %}
 Get Query Results based on a keyword query
 {% endapi-method-summary %}
@@ -184,7 +184,7 @@ Request failed as Rest-API Service was not accessible.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://:ingress" path="/v1/entity/:type/:uid" %}
+{% api-method method="get" host="http://address" path="/v1/entity/:type/:uid" %}
 {% api-method-summary %}
 Get Entity Details by uid
 {% endapi-method-summary %}
@@ -209,7 +209,7 @@ This endpoint allows the user to get details for the provided kubernetes entitit
 
 {% api-method-query-parameters %}
 {% api-method-parameter name="type" type="string" required=true %}
-Type of entity \[Namespace, Service, Deployment, ReplicaSet, Pod, PersistentVolume, StatefulSet, DaemonSet\]
+Type of entity \[Ingress, Service, Deployment, Pod, StatefulSet\]
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="uid" type="string" required=true %}
