@@ -26,7 +26,7 @@ minikube version: v0.30.0
 
 {% embed url="https://github.com/kubernetes/minikube" %}
 
-3. Note that cluster "minikube"  and namespace "default" exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
+3. Note that cluster `minikube`  and namespace `default` exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
 
 ```text
 $ kubectl config get-clusters
@@ -77,7 +77,7 @@ dgraph-zero-2                        1/1     Running   0          1d
 Check all Services are running
 
 ```text
-INTUL16837867a:~ sshroff3$ kubectl get services
+$ kubectl get services
 NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
 cutlass-api           NodePort       10.105.111.199   <none>        8011:31759/TCP                  4h
 dgraph-alpha          ClusterIP      None             <none>        7080/TCP                        1d
@@ -87,7 +87,7 @@ dgraph-zero           ClusterIP      None             <none>        5080/TCP    
 dgraph-zero-public    LoadBalancer   10.102.1.152     <pending>     5080:31480/TCP,6080:32583/TCP   1d
 ```
 
-Point your browser to the following URL to start using K-Atlas:
+Point your browser to the following URL to start using K-Atlas Browser:
 
 ```text
 http://ingress/

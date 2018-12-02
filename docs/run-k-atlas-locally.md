@@ -36,10 +36,13 @@ go run *.go
 
     6. Run the Web Viewer
 
-* cd cutlass/app/
-* yarn install
-* yarn start
-* This will open the Web viewer in the browser
+```text
+$ cd cutlass/app/
+$ yarn install
+$ yarn start
+```
+
+This will open the Web viewer in the browser
 
 
 
