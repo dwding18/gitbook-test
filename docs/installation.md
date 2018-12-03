@@ -54,7 +54,7 @@ $ kubectl expose deployment cutlass-api --type=NodePort
 
 $ kubectl create -f deploy/cutlass-collector.yaml
 
-$ kubectl create -f deploy/cutlass-browser.yaml
+$ kubectl create -f deploy/cutlass-ui.yaml
 ```
 
 Check all pods are up
@@ -63,6 +63,7 @@ Check all pods are up
 $ kubectl get pods
 NAME                                 READY   STATUS    RESTARTS   AGE
 cutlass-api-684cc89fdd-h7bll         1/1     Running   0          4h
+cutlass-ui-589b59b9b7-8ncpt          1/1     Running   0          7m
 cutlass-controller-878b7b8ff-jsq8x   1/1     Running   0          28s
 dgraph-alpha-0                       1/1     Running   0          1d
 dgraph-alpha-1                       1/1     Running   0          1d
@@ -79,7 +80,8 @@ Check all Services are running
 ```text
 $ kubectl get services
 NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
-cutlass-api           NodePort       10.105.111.199   <none>        8011:31759/TCP                  4h
+cutlass-api           NodePort       10.105.111.199   <none>        8011:31759/TCP                   4h
+cutlass-ui            LoadBalancer   10.96.154.88     <pending>     80:30417/TCP                    14s
 dgraph-alpha          ClusterIP      None             <none>        7080/TCP                        1d
 dgraph-alpha-public   LoadBalancer   10.101.113.42    <pending>     8080:30620/TCP,9080:31265/TCP   1d
 dgraph-ratel-public   LoadBalancer   10.109.199.98    <pending>     8000:32116/TCP                  1d
@@ -87,10 +89,14 @@ dgraph-zero           ClusterIP      None             <none>        5080/TCP    
 dgraph-zero-public    LoadBalancer   10.102.1.152     <pending>     5080:31480/TCP,6080:32583/TCP   1d
 ```
 
-Point your browser to the following URL to start using K-Atlas Browser:
+If using minikube, point your browser to the following URL to start using K-Atlas Browser:
+
+The minikube Ip can be optained using command &lt;minikube ip&gt;
+
+The UI port can be obtained from the services output for cutlass-ui above.30417 in this case.
 
 ```text
-http://ingress/
+http://<minikube-ip>:<ui-port>
 ```
 
 Or you can install individual components using below instructions. 
@@ -153,7 +159,7 @@ deployment.extensions/cutlass-controller created
 ### Install K-Atlas Browser
 
 ```text
-$ kubectl create -f deploy/cutlass-browser.yaml
+$ kubectl create -f deploy/cutlass-ui.yaml
 ```
 
 For issues with Installation, please check the [FAQ](faq.md) Section.
