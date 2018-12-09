@@ -5,7 +5,7 @@ With an introduction to the core concepts in the previous sections, lets move on
 ## Prerequisites
 
 {% hint style="info" %}
-We will assume a Kubernetes cluster with Minikube is being used. If using another Kubernetes cluster the Installation yaml files will need to be modified to use the correct cluster and namespace.
+The below installation will assume a Kubernetes cluster with Minikube is being used. If using another Kubernetes cluster, the Installation yaml files will need to be modified to use the correct cluster and namespace.
 {% endhint %}
 
 1. Install VirtualBox \(Required for Minikube\)
@@ -26,7 +26,7 @@ minikube version: v0.30.0
 
 {% embed url="https://github.com/kubernetes/minikube" %}
 
-3. Note that cluster `minikube`  and namespace `default` exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
+3. Once minikube is up and running, Note that cluster `minikube`  and namespace `default` exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
 
 ```text
 $ kubectl config get-clusters
@@ -41,13 +41,38 @@ kube-system   Active   11m
  
 ```
 
+Then move onto installing Cutlass. Cutlass can be installed All-in-One or each component can be installed separately.
+
 ## Install All-in-one
 
 Install everything to have a ready-to-use setup of K-Atlas:
 
+TODO- Should we have a single script for this.
+
 ```text
-$ kubectl create -f https://raw.githubusercontent.com/dgraph-io/dgraph/master/contrib/config/kubernetes/dgraph-ha.yaml
-$ kubectl create -f deploy/dgraph-schema.yaml
+$ kubectl create -f deploy/dgraph-ha.yaml
+
+Check Dgraph instances are up and Running.
+
+$ kubectl get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+dgraph-alpha-0                       1/1     Running   0          1d
+dgraph-alpha-1                       1/1     Running   0          1d
+dgraph-alpha-2                       1/1     Running   0          1d
+dgraph-ratel-7b7bc97649-46nw5        1/1     Running   0          1d
+dgraph-zero-0                        1/1     Running   0          1d
+dgraph-zero-1                        1/1     Running   0          1d
+dgraph-zero-2                        1/1     Running   0          1d
+
+Setup Dgraph to create Schema-
+go run deploy/create_db_schema.go -dbhost=<> -port=<>
+
+Setup Dgraph to create Metadata-
+go run deploy/create_k8smeta.go -dbhost=<> -port=<>
+
+where dbhost = minikube-ip
+where port = NodePort for service dgraph-alpha-public.
+For details on getting the port please refer to our FAQ Scetion.
 
 $ kubectl create -f deploy/cutlass-api.yaml
 $ kubectl expose deployment cutlass-api --type=NodePort
@@ -93,13 +118,21 @@ If using minikube, point your browser to the following URL to start using K-Atla
 
 The minikube Ip can be optained using command &lt;minikube ip&gt;
 
-The UI port can be obtained from the services output for cutlass-ui above.30417 in this case.
+The UI port can be obtained from the services output for cutlass-ui above.It is the Node port for the Cutlass UI Service- 30417 in this case.
 
 ```text
-http://<minikube-ip>:<ui-port>
+https://<minikube-ip>:<ui-port>
 ```
 
-Or you can install individual components using below instructions. 
+Populate some Mock data in Dgraph, and view your results in the browser.
+
+TODO - script to populate Mock data in Dgraph.
+
+{% hint style="info" %}
+Ensure you use the Chrome browser. The CORS plugin must be installed and enabled in Chrome. For issues accessing the UI, please refer to the FAQ Section.
+{% endhint %}
+
+## Install Individual Components
 
 The individual components must be installed in the below order-
 
@@ -115,7 +148,7 @@ The individual components will be deployed in Kubernetes clusters. To run locall
 DGraph is the data store that Culass uses to persist node data. It is a fairly straight forward process to install DGraph into Kubernetes:
 
 ```bash
-$ kubectl create -f https://raw.githubusercontent.com/dgraph-io/dgraph/master/contrib/config/kubernetes/dgraph-ha.yaml
+$ kubectl create -f deploy/dgraph-ha.yaml
 ```
 
 Output:
@@ -132,9 +165,21 @@ statefulset "dgraph-alpha" created
 deployment "dgraph-ratel" created
 ```
 
-### Setup Dgraph Schema
+### Setup Dgraph
 
-TODO- we will have a script/code for this
+```text
+1. Setup Dgraph to create Schema-
+go run deploy/create_db_schema.go -dbhost=<> -port=<>
+
+2. Setup Dgraph to create Metadata-
+go run deploy/create_k8smeta.go -dbhost=<> -port=<>
+
+3. Setup Mock Data in Dgraph- TODO
+
+where dbhost = minikube-ip
+where port = NodePort for service dgraph-alpha-public.
+For details on getting the port please refer to our FAQ Scetion.
+```
 
 ### Install K-Atlas API
 
