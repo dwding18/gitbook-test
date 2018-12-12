@@ -5,28 +5,18 @@ With an introduction to the core concepts in the previous sections, lets move on
 ## Prerequisites
 
 {% hint style="info" %}
-The below installation will assume a Kubernetes cluster with Minikube is being used. If using another Kubernetes cluster, the Installation yaml files will need to be modified to use the correct cluster and namespace.
+The below installation will assume a Kubernetes cluster with Minikube is being used. 
 {% endhint %}
 
-1. Install VirtualBox \(Required for Minikube\)
-
-```text
-$ vboxmanage --version
-5.2.22r126460
-```
-
-{% embed url="https://www.virtualbox.org/wiki/Downloads" %}
-
-2. Install Minikube
-
-```text
-minikube version
-minikube version: v0.30.0
-```
+1. Install Minikube
 
 {% embed url="https://github.com/kubernetes/minikube" %}
 
-3. Once minikube is up and running, Note that cluster `minikube`  and namespace `default` exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
+2. Once minikube is up and running, Note that cluster `minikube`  and namespace `default` exists after the above steps. The yaml files used in the Installation use this cluster and namespace.
+
+{% hint style="info" %}
+If using another cluster and namespace, the K-Atlas Installation yaml files will need to be modified to use the correct cluster and namespace.
+{% endhint %}
 
 ```text
 $ kubectl config get-clusters
@@ -38,48 +28,65 @@ NAME          STATUS   AGE
 default       Active   11m
 kube-public   Active   11m
 kube-system   Active   11m
- 
 ```
 
-Then move onto installing Cutlass. Cutlass can be installed All-in-One or each component can be installed separately.
+Then move onto installing K-Atlas. 
 
-## Install All-in-one
+## Install K-Atlas
 
-Install everything to have a ready-to-use setup of K-Atlas:
+The individual components must be installed in the below order-
 
-TODO- Should we have a single script for this.
+* Dgraph
+* K-Atlas Service
+* K-Atlas Kubernetes Collector
+* K-Atlas Browser
 
 ```text
-$ kubectl create -f deploy/dgraph-ha.yaml
+$ kubectl create -f deploy/dgraph.yaml
 
-Check Dgraph instances are up and Running.
+$ kubectl get services
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                                      AGE
+dgraph-public   LoadBalancer   10.109.53.229   <pending>     5080:30766/TCP,6080:32699/TCP,8080:32038/TCP,9080:30796/TCP,8000:31572/TCP   1d
 
 $ kubectl get pods
 NAME                                 READY   STATUS    RESTARTS   AGE
-dgraph-alpha-0                       1/1     Running   0          1d
-dgraph-alpha-1                       1/1     Running   0          1d
-dgraph-alpha-2                       1/1     Running   0          1d
-dgraph-ratel-7b7bc97649-46nw5        1/1     Running   0          1d
-dgraph-zero-0                        1/1     Running   0          1d
-dgraph-zero-1                        1/1     Running   0          1d
-dgraph-zero-2                        1/1     Running   0          1d
+dgraph-0                             3/3     Running   0          1d
+```
 
-Setup Dgraph to create Schema-
+Setup Dgraph with the Schema and Metadata \[TODO- This step is temporary, after more code changes, it will be done by the code\]
+
+```text
 go run deploy/create_db_schema.go -dbhost=<> -port=<>
-
-Setup Dgraph to create Metadata-
 go run deploy/create_k8smeta.go -dbhost=<> -port=<>
 
 where dbhost = minikube-ip
-where port = NodePort for service dgraph-alpha-public.
-For details on getting the port please refer to our FAQ Scetion.
+where port = NodePort corresponding to Port 9080, in the output of 'kubectl get service dgraph-public' .
+```
 
-$ kubectl create -f deploy/cutlass-api.yaml
-$ kubectl expose deployment cutlass-api --type=NodePort
+Install K-Atlas Service
 
-$ kubectl create -f deploy/cutlass-collector.yaml
+```text
+$ kubectl create -f deploy/katlas-api.yaml
+```
 
-$ kubectl create -f deploy/cutlass-ui.yaml
+Install K-Atlas Collector
+
+```text
+$ kubectl create -f deploy/katlas-collector.yaml
+```
+
+Install K-Atlas Browser
+
+{% hint style="info" %}
+Modify the below env variable in deploy/katlas-ui.yaml and then run the kubectl command.
+
+KATLAS\_API\_URL
+
+value: http://&lt;minikube-ip&gt;:30415
+{% endhint %}
+
+```text
+$ kubectl create -f deploy/katlas-ui.yaml
 ```
 
 Check all pods are up
@@ -87,125 +94,30 @@ Check all pods are up
 ```text
 $ kubectl get pods
 NAME                                 READY   STATUS    RESTARTS   AGE
-cutlass-api-684cc89fdd-h7bll         1/1     Running   0          4h
-cutlass-ui-589b59b9b7-8ncpt          1/1     Running   0          7m
-cutlass-controller-878b7b8ff-jsq8x   1/1     Running   0          28s
-dgraph-alpha-0                       1/1     Running   0          1d
-dgraph-alpha-1                       1/1     Running   0          1d
-dgraph-alpha-2                       1/1     Running   0          1d
-dgraph-ratel-7b7bc97649-46nw5        1/1     Running   0          1d
-dgraph-zero-0                        1/1     Running   0          1d
-dgraph-zero-1                        1/1     Running   0          1d
-dgraph-zero-2                        1/1     Running   0          1d
-
+dgraph-0                             3/3     Running   9          1d
+katlas-api-748668b795-wt6gk          1/1     Running   3          1d
+katlas-controller-8586d84564-njrvr   1/1     Running   3          1d
+katlas-ui-5875c79c64-2zhwk           1/1     Running   3          1d
 ```
 
 Check all Services are running
 
 ```text
 $ kubectl get services
-NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
-cutlass-api           NodePort       10.105.111.199   <none>        8011:31759/TCP                   4h
-cutlass-ui            LoadBalancer   10.96.154.88     <pending>     80:30417/TCP                    14s
-dgraph-alpha          ClusterIP      None             <none>        7080/TCP                        1d
-dgraph-alpha-public   LoadBalancer   10.101.113.42    <pending>     8080:30620/TCP,9080:31265/TCP   1d
-dgraph-ratel-public   LoadBalancer   10.109.199.98    <pending>     8000:32116/TCP                  1d
-dgraph-zero           ClusterIP      None             <none>        5080/TCP                        1d
-dgraph-zero-public    LoadBalancer   10.102.1.152     <pending>     5080:31480/TCP,6080:32583/TCP   1d
+dgraph-public   LoadBalancer   10.105.204.11    <pending>     5080:30252/TCP,6080:31104/TCP,8080:32395/TCP,9080:30796/TCP,8000:30063/TCP   1d
+katlas-api      LoadBalancer   10.96.175.179    <pending>     8011:30415/TCP                                                               1d
+katlas-ui       LoadBalancer   10.106.140.250   <pending>     80:30417/TCP                                                                 1d
 ```
 
 If using minikube, point your browser to the following URL to start using K-Atlas Browser:
 
-The minikube Ip can be optained using command &lt;minikube ip&gt;
-
-The UI port can be obtained from the services output for cutlass-ui above.It is the Node port for the Cutlass UI Service- 30417 in this case.
-
 ```text
-https://<minikube-ip>:<ui-port>
+https://<minikube-ip>:30417
 ```
-
-Populate some Mock data in Dgraph, and view your results in the browser.
-
-TODO - script to populate Mock data in Dgraph.
 
 {% hint style="info" %}
-Ensure you use the Chrome browser. The CORS plugin must be installed and enabled in Chrome. For issues accessing the UI, please refer to the FAQ Section.
+Ensure you use the Chrome browser. The CORS plugin must be installed and enabled in Chrome. For issues with Installation, please refer to the FAQ Section.
 {% endhint %}
 
-## Install Individual Components
 
-The individual components must be installed in the below order-
-
-* Dgraph
-* K-Atlas API
-* K-Atlas Kubernetes Collector
-* K-Atlas Browser
-
-The individual components will be deployed in Kubernetes clusters. To run locally, please see the Section [Run K-Atlas locally](run-k-atlas-locally.md).
-
-### Install DGraph
-
-DGraph is the data store that Culass uses to persist node data. It is a fairly straight forward process to install DGraph into Kubernetes:
-
-```bash
-$ kubectl create -f deploy/dgraph-ha.yaml
-```
-
-Output:
-
-```bash
-service "dgraph-zero-public" created
-service "dgraph-alpha-public" created
-service "dgraph-alpha-0-http-public" created
-service "dgraph-ratel-public" created
-service "dgraph-zero" created
-service "dgraph-alpha" created
-statefulset "dgraph-zero" created
-statefulset "dgraph-alpha" created
-deployment "dgraph-ratel" created
-```
-
-### Setup Dgraph
-
-```text
-1. Setup Dgraph to create Schema-
-go run deploy/create_db_schema.go -dbhost=<> -port=<>
-
-2. Setup Dgraph to create Metadata-
-go run deploy/create_k8smeta.go -dbhost=<> -port=<>
-
-3. Setup Mock Data in Dgraph- TODO
-
-where dbhost = minikube-ip
-where port = NodePort for service dgraph-alpha-public.
-For details on getting the port please refer to our FAQ Scetion.
-```
-
-### Install K-Atlas API
-
-```text
-$ kubectl create -f deploy/cutlass-api.yaml
-deployment.apps/cutlass-api created
-
-$ kubectl expose deployment cutlass-api --type=NodePort
-service/cutlass-api exposed
-```
-
-### Install K-Atlas Kubernetes Collector
-
-```text
-$ kubectl create -f deploy/cutlass-collector.yaml
-role.rbac.authorization.k8s.io/controller-reader created
-serviceaccount/cutlass-controller created
-clusterrolebinding.rbac.authorization.k8s.io/cutlass-controller created
-deployment.extensions/cutlass-controller created
-```
-
-### Install K-Atlas Browser
-
-```text
-$ kubectl create -f deploy/cutlass-ui.yaml
-```
-
-For issues with Installation, please check the [FAQ](faq.md) Section.
 
