@@ -56,8 +56,9 @@ dgraph-0                             3/3     Running   0          1d
 Setup Dgraph with the Schema and Metadata \[TODO- This step is temporary, after more code changes, it will be done by the code\]
 
 ```text
-go run deploy/create_db_schema.go -dbhost=<> -port=<>
-go run deploy/create_k8smeta.go -dbhost=<> -port=<>
+cd deploy/
+go run create_db_schema.go -dbhost=<> -port=<>
+go run create_k8smeta.go -dbhost=<> -port=<>
 
 where dbhost = minikube-ip
 where port = NodePort corresponding to Port 9080, in the output of 'kubectl get service dgraph-public' .
@@ -66,7 +67,7 @@ where port = NodePort corresponding to Port 9080, in the output of 'kubectl get 
 Install K-Atlas Service
 
 ```text
-$ kubectl create -f deploy/katlas-api.yaml
+$ kubectl create -f deploy/katlas-service.yaml
 ```
 
 Install K-Atlas Collector
@@ -78,7 +79,7 @@ $ kubectl create -f deploy/katlas-collector.yaml
 Install K-Atlas Browser
 
 {% hint style="info" %}
-Modify the below env variable in deploy/katlas-ui.yaml and then run the kubectl command.
+Modify the below env variable in deploy/katlas-browser.yaml and then run the kubectl command.
 
 KATLAS\_API\_URL
 
@@ -86,7 +87,7 @@ value: http://&lt;minikube-ip&gt;:30415
 {% endhint %}
 
 ```text
-$ kubectl create -f deploy/katlas-ui.yaml
+$ kubectl create -f deploy/katlas-browser.yaml
 ```
 
 Check all pods are up
@@ -95,9 +96,9 @@ Check all pods are up
 $ kubectl get pods
 NAME                                 READY   STATUS    RESTARTS   AGE
 dgraph-0                             3/3     Running   9          1d
-katlas-api-748668b795-wt6gk          1/1     Running   3          1d
+katlas-service-748668b795-wt6gk      1/1     Running   3          1d
 katlas-controller-8586d84564-njrvr   1/1     Running   3          1d
-katlas-ui-5875c79c64-2zhwk           1/1     Running   3          1d
+katlas-browser-5875c79c64-2zhwk      1/1     Running   3          1d
 ```
 
 Check all Services are running
@@ -105,14 +106,14 @@ Check all Services are running
 ```text
 $ kubectl get services
 dgraph-public   LoadBalancer   10.105.204.11    <pending>     5080:30252/TCP,6080:31104/TCP,8080:32395/TCP,9080:30796/TCP,8000:30063/TCP   1d
-katlas-api      LoadBalancer   10.96.175.179    <pending>     8011:30415/TCP                                                               1d
-katlas-ui       LoadBalancer   10.106.140.250   <pending>     80:30417/TCP                                                                 1d
+katlas-service  LoadBalancer   10.96.175.179    <pending>     8011:30415/TCP                                                               1d
+katlas-browser  LoadBalancer   10.106.140.250   <pending>     80:30417/TCP                                                                 1d
 ```
 
 If using minikube, point your browser to the following URL to start using K-Atlas Browser:
 
 ```text
-https://<minikube-ip>:30417
+http://<minikube-ip>:30417
 ```
 
 {% hint style="info" %}

@@ -7,7 +7,7 @@ description: >-
 
 # K-Atlas APIs
 
-The Rest-API Service supports secure and in-secure access. When using the secure mode the appropriate headers must be provided.
+
 
 When running locally- Use the local Ip and port that the Rest Service is running on.
 
@@ -15,13 +15,17 @@ Eg http://127.0.0.1:8011/
 
 When running as part of the cluster, Use the appropriate Address and Port. 
 
-{% api-method method="get" host="http://address/health" path="" %}
+{% hint style="info" %}
+If following the Installation instructions as part of [Installation](installation.md), address will be &lt;minikube-ip&gt;:30415
+{% endhint %}
+
+{% api-method method="get" host="http" path="" %}
 {% api-method-summary %}
-Get status of Cutlass Service
+Get status of Katlas service
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+http://address/health
 {% endapi-method-description %}
 
 {% api-method-spec %}
