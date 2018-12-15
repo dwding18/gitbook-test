@@ -1,7 +1,3 @@
----
-description: What motivated us to develop K-Atlas ?
----
-
 # Motivation
 
 In a Kubernetes ecosystem, with multiple clusters deployed, it is not only time consuming, but tedious for operators/developers to debug issues. Application deployment data are stored in various dispersed systems and difficult to navigate, audit and diagnose. K-Atlas solves this by providing a holistic view and query interface.

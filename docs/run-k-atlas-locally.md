@@ -1,7 +1,3 @@
----
-description: How do I run K-Atlas locally ?
----
-
 # Run K-Atlas locally
 
 1. Clone the repository.

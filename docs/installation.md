@@ -4,9 +4,7 @@ With an introduction to the core concepts in the previous sections, lets move on
 
 ## Prerequisites
 
-{% hint style="info" %}
-The below installation will assume a Kubernetes cluster with Minikube is being used. 
-{% endhint %}
+**The below installation will assume a Kubernetes cluster with Minikube is being used.**
 
 1. Install Minikube
 
@@ -117,7 +115,7 @@ http://<minikube-ip>:30417
 ```
 
 {% hint style="info" %}
-Ensure you use the Chrome browser. The CORS plugin must be installed and enabled in Chrome. For issues with Installation, please refer to the FAQ Section.
+Ensure you use the Chrome browser. For issues with Installation, please refer to the FAQ Section.
 {% endhint %}
 
 

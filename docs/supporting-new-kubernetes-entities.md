@@ -1,7 +1,3 @@
----
-description: How can I add support for a Kubernetes entity ?
----
-
 # Supporting new Kubernetes Entities
 
 #### Currently Supported Kubernetes Entities
