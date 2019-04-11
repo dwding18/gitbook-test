@@ -4,30 +4,28 @@
 
 ### Flow
 ```
-┌────────────────────────┐                                                            ┌──────────────────────┐
-│                        │                                                            │ Score < 50 for Scale │
-│     Determine TPS      │                                                            │         DOWN         │
-│  seasonality & trend   │                                                            │ Score > 50 for Scale │
-│                        │                                                            │          UP          │
-└────────────────────────┘                                                            └──────────────────────┘
-             │                                                                                    ▲
-             │                                     ┌────────────────┐                             │
-             │                                     │ Use predicted  │                             │
-             │                                 ┌──▶│     trend      │──────┐                      │
-             ▼                                 │   └────────────────┘      │                      │
-┌────────────────────────┐                     │                           ▼                      │
-│                        │                     │              ┌─────────────────────────┐         │
-│     Calculate TPS      │                    No              │      Reward function:   │         │
-│ upper-lower bound for  │────▶  Anomaly?   ───┤              │     R(action) based on  │─────────┘
-│       every 30m        │                     │              │        SLA metrics      │
-│                        │                     │              └─────────────────────────┘
-└────────────────────────┘                   Yes                           ▲
-                                               │   ┌────────────────┐      │
-                                               │   │  Use detected  │      │
-                                               └──▶│trend w/ cycles │──────┘
-                                                   └────────────────┘
-
-
+┌────────────────────────┐                                                       ┌──────────────────────┐
+│                        │                                                       │ Score < 50 for Scale │
+│     Determine TPS      │                                                       │         DOWN         │
+│  seasonality & trend   │                                                       │ Score > 50 for Scale │
+│                        │                                                       │          UP          │
+└────────────────────────┘                                                       └──────────────────────┘
+             │                                                                               ▲           
+             │                                     ┌────────────────┐                        │           
+             │                                     │ Use predicted  │                        │           
+             │                                 ┌──▶│     trend      │──────┐                 │           
+             ▼                                 │   └────────────────┘      │                 │           
+┌────────────────────────┐                     │                           ▼                 │           
+│                        │                     │              ┌─────────────────────────┐    │           
+│     Calculate TPS      │                    No              │      Reward function:   │    │           
+│ upper-lower bound for  │────▶  Anomaly?   ───┤              │     R(action) based on  │────┘           
+│       every 30m        │                     │              │        SLA metrics      │                
+│                        │                     │              └─────────────────────────┘                
+└────────────────────────┘                   Yes                           ▲                             
+                                               │   ┌────────────────┐      │                             
+                                               │   │  Use detected  │      │                             
+                                               └──▶│trend w/ cycles │──────┘                             
+                                                   └────────────────┘                                    
 ```
 ### Steps
 - Define a reward function __R(action)__ for application, using by default
